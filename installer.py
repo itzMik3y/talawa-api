@@ -236,6 +236,7 @@ def two_factor_auth():
 def check_super_admin():
     """Check if a Super Admin account already exists."""
     client = MongoClient(DB_URL)
+    
     db = client["talawa-api"]
     users_collection = db["users"]
 

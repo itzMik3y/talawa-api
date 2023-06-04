@@ -114,7 +114,7 @@ function recaptcha() {
     console.log("\nSelect reCAPTCHA v2");
     console.log("and the 'I'm not a robot' checkbox option\n");
     console.log("Add 'localhost in domains and accept the terms, then press submit");
-    let recaptcha_secret_key = readline.question("\nEnter your reCAPTCHA secret site key: ");
+    let recaptcha_secret_key = readline.question("\nEnter your reCAPTCHA secret site key: ", {hideEchoBack: true,mask:" "});
     if (!validate_recaptcha(recaptcha_secret_key)) {
         console.log("Invalid reCAPTCHA secret key. Please try again.");
         recaptcha_secret_key = readline.question("\nEnter your reCAPTCHA secret site key: ");
@@ -146,7 +146,7 @@ function two_factor_auth() {
         console.log("Invalid email. Please try again.");
         email = readline.question("\nEnter your email: ");
     }
-    let password = readline.questionNewPassword("Enter the generated password: ", {hideEchoBack: true});
+    let password = readline.question("Enter the generated password: ", {hideEchoBack: true,mask:" "});
     config["MailUsername"]["MAIL_USERNAME"] = email;
     config["MailPassword"]["MAIL_PASSWORD"] = password;
     fs.writeFileSync('.env', `${config["MailUsername"]["MAIL_USERNAME"]}`);
